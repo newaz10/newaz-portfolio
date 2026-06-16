@@ -1,9 +1,15 @@
 import type { Metadata, Viewport } from "next";
-import { Inter, JetBrains_Mono, Lora, Playfair_Display } from "next/font/google";
+import {
+  Inter,
+  JetBrains_Mono,
+  Lora,
+  Playfair_Display,
+} from "next/font/google";
 import { siteConfig } from "~/data/site-config";
 import { StarField } from "~/components/effects/StarField";
 import { Navbar } from "~/components/ui/Navbar";
 import { Footer } from "~/components/ui/Footer";
+// @ts-expect-error - CSS imports are not typed
 import "./globals.css";
 
 const inter = Inter({
@@ -66,9 +72,7 @@ export default function RootLayout({
       >
         <StarField />
         <Navbar />
-        <main className="relative z-10 pt-16">
-          {children}
-        </main>
+        <main className="relative z-10 pt-16">{children}</main>
         <Footer />
       </body>
     </html>

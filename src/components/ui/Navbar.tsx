@@ -25,7 +25,16 @@ export function Navbar() {
     <nav className="fixed top-4 left-1/2 -translate-x-1/2 z-50 w-[calc(100%-2rem)] max-w-212.5">
       <div className="rounded-2xl bg-zinc-900/90 backdrop-blur-xl border border-zinc-800 px-4 py-3 md:px-6">
         <div className="flex items-center justify-between">
-          <Link href="/" className="text-lg font-extrabold text-white">
+          <Link
+            href="/"
+            className="text-lg font-extrabold text-white"
+            onClick={() => {
+              // If we are already on home, manually scroll to top
+              if (pathname === "/") {
+                window.scrollTo({ top: 0, behavior: "smooth" });
+              }
+            }}
+          >
             {personalInfo.name.split(" ")[1]}
             <span className="text-red-500">.</span>
           </Link>

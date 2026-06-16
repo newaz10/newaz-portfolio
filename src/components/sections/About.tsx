@@ -1,128 +1,84 @@
 "use client";
 
-import { useState, useEffect, useCallback } from "react";
+import { motion } from "framer-motion";
 import Image from "next/image";
-import { motion, AnimatePresence } from "framer-motion";
-import { Wrench } from "lucide-react";
 import { personalInfo } from "~/data/personal";
 import { AnimatedSection } from "~/components/ui/AnimatedSection";
 import { SectionHeading } from "~/components/ui/SectionHeading";
+import avatarImg from "~/assets/avatar.jpeg";
 
-const stats = [
-  { value: "4+", label: "Years Experience" },
-  { value: "20+", label: "Projects Delivered" },
-  { value: "20+", label: "Happy Clients" },
-];
-
-interface AboutProps {
-  profileImages?: string[];
-}
-
-export function About({ profileImages = [] }: AboutProps) {
-  const [currentIndex, setCurrentIndex] = useState(0);
-  const imageCount = profileImages.length;
-  const hasMultiple = imageCount > 1;
-
-  const nextImage = useCallback(() => {
-    setCurrentIndex((prev) => (prev + 1) % imageCount);
-  }, [imageCount]);
-
-  // Auto-advance every 3s when multiple images
-  useEffect(() => {
-    if (!hasMultiple) return;
-    const timer = setInterval(nextImage, 3000);
-    return () => clearInterval(timer);
-  }, [hasMultiple, nextImage]);
-
+export function About() {
   return (
     <AnimatedSection id="about">
-      <div className="mx-auto max-w-4xl">
+      <div className="mx-auto max-w-5xl px-4">
+        {" "}
+        {/* Increased max-width slightly for breathing room */}
         <SectionHeading title="About Me" subtitle="Get to know me better" />
-        <div className="grid gap-10 md:grid-cols-2 items-center">
-          {/* Profile photo / carousel */}
-          <div className="aspect-square rounded-2xl bg-white/5 border border-white/10 relative overflow-hidden group">
-            <div className="absolute -inset-1 rounded-2xl bg-gradient-to-br from-red-500/20 to-orange-500/20 blur-xl opacity-50 z-0" />
+        {/* Changed items-start to items-center for perfect vertical alignment */}
+        <div className="grid gap-8 md:grid-cols-[240px_1fr] items-center">
+          {/* Round Avatar */}
+          <motion.div
+            className="relative mx-auto md:mx-0 group"
+            initial={{ opacity: 0, scale: 0.8 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5 }}
+          >
+            {/* Enhanced border and shadow to match screenshot glow */}
+            <div className="w-56 h-56 rounded-full overflow-hidden border-[3px] border-red-500/40 shadow-[0_0_30px_rgba(239,68,68,0.15)] transition-all duration-300 group-hover:border-red-500/60 group-hover:shadow-[0_0_40px_rgba(239,68,68,0.25)]">
+              <Image
+                src={avatarImg}
+                alt="Newaz - Full-Stack Developer"
+                width={224}
+                height={224}
+                className="object-cover w-full h-full transform transition-transform duration-500 group-hover:scale-110"
+                priority
+              />
+            </div>
+          </motion.div>
 
-            {imageCount === 0 ? (
-              <div className="relative z-10 w-full h-full flex items-center justify-center">
-                <span className="text-[#a1a1aa]/60 text-sm font-mono">
-                  Profile Photo
-                </span>
-              </div>
-            ) : (
-              <div className="relative z-10 w-full h-full">
-                <AnimatePresence mode="wait">
-                  <motion.div
-                    key={currentIndex}
-                    initial={hasMultiple ? { opacity: 0, scale: 1.05 } : false}
-                    animate={{ opacity: 1, scale: 1 }}
-                    exit={{ opacity: 0, scale: 0.97 }}
-                    transition={{ duration: 0.6, ease: [0.4, 0, 0.2, 1] }}
-                    className="absolute inset-0"
-                  >
-                    <Image
-                      src={profileImages[currentIndex]}
-                      alt={`Profile photo ${currentIndex + 1}`}
-                      fill
-                      className="object-cover rounded-2xl"
-                      sizes="(max-width: 768px) 100vw, 50vw"
-                      priority={currentIndex === 0}
-                    />
-                  </motion.div>
-                </AnimatePresence>
+          {/* Bio & Stats Card */}
+          <motion.div
+            className="w-full"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5, delay: 0.2 }}
+          >
+            <div className="glass rounded-2xl p-6 md:p-8 border border-white/5 bg-white/[0.03] backdrop-blur-md">
+              <p className="text-[#a1a1aa] leading-relaxed text-base md:text-lg">
+                {personalInfo.bio}
+              </p>
 
-                {/* Dot indicators */}
-                {hasMultiple && (
-                  <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-2 z-20">
-                    {profileImages.map((_, i) => (
-                      <button
-                        key={i}
-                        onClick={() => setCurrentIndex(i)}
-                        className={`h-2 rounded-full transition-all duration-300 ${
-                          i === currentIndex
-                            ? "bg-white w-6"
-                            : "bg-white/40 hover:bg-white/60 w-2"
-                        }`}
-                        aria-label={`Go to image ${i + 1}`}
-                      />
-                    ))}
-                  </div>
-                )}
-              </div>
-            )}
-          </div>
-
-          <div>
-            <p className="text-[#a1a1aa] leading-relaxed text-base">
-              {personalInfo.bio}
-            </p>
-            <div className="mt-8 grid grid-cols-2 gap-4">
-              {stats.map((stat) => (
-                <div
-                  key={stat.label}
-                  className="glass rounded-lg p-4 text-center transition-all duration-300 hover:shadow-[0_0_20px_rgba(239,68,68,0.15)]"
-                >
-                  <p className="text-2xl font-bold text-[#fafafa]">
-                    {stat.value}
+              {/* Quick Stats */}
+              <div className="mt-8 grid grid-cols-3 gap-4 pt-6 border-t border-white/10">
+                <div className="text-center group/stat">
+                  <p className="text-3xl md:text-4xl font-bold text-red-500 transition-colors group-hover/stat:text-red-400">
+                    1+
                   </p>
-                  <p className="text-sm text-[#a1a1aa]/60 mt-1">
-                    {stat.label}
+                  <p className="text-xs md:text-sm text-[#a1a1aa]/60 mt-1 font-medium uppercase tracking-wide">
+                    Years Exp.
                   </p>
                 </div>
-              ))}
-
-              {/* Building Tools card */}
-              <a
-                href="#projects"
-                className="glass rounded-lg p-4 text-center transition-all duration-300 hover:shadow-[0_0_20px_rgba(239,68,68,0.15)] group/card flex flex-col items-center justify-center"
-              >
-                <Wrench className="w-6 h-6 text-red-400 group-hover/card:rotate-12 transition-transform duration-300" />
-                <p className="text-sm text-[#a1a1aa]/60 mt-2">
-                  Building Useful Tools
-                </p>
-              </a>
+                <div className="text-center group/stat">
+                  <p className="text-3xl md:text-4xl font-bold text-orange-500 transition-colors group-hover/stat:text-orange-400">
+                    15+
+                  </p>
+                  <p className="text-xs md:text-sm text-[#a1a1aa]/60 mt-1 font-medium uppercase tracking-wide">
+                    Projects
+                  </p>
+                </div>
+                <div className="text-center group/stat">
+                  <p className="text-3xl md:text-4xl font-bold text-red-500 transition-colors group-hover/stat:text-red-400">
+                    10+
+                  </p>
+                  <p className="text-xs md:text-sm text-[#a1a1aa]/60 mt-1 font-medium uppercase tracking-wide">
+                    Clients
+                  </p>
+                </div>
+              </div>
             </div>
-          </div>
+          </motion.div>
         </div>
       </div>
     </AnimatedSection>

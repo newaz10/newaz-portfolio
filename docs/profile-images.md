@@ -1,18 +1,6 @@
 # Profile Images & Carousel
 
-*Last updated: 12 Feb 2026*
-
 The About section displays profile photos in an auto-advancing carousel with manual dot navigation.
-
-## Architecture Overview
-
-```
-public/profile/*.heic ──► scripts/convert-images.mjs ──► public/profile/*.webp
-                              (predev / prebuild)
-
-src/lib/profile.ts ── getProfileImages() ──► src/app/page.tsx ──► <About profileImages={[...]} />
-   (build-time fs read)                        (server component)       (client component)
-```
 
 ## How to Add Photos
 
@@ -44,10 +32,6 @@ Sharp's prebuilt `libvips` binary excludes the HEVC codec due to MPEG-LA patent 
 
 ## Image Reader
 
-**File:** `src/lib/profile.ts`
-
-`getProfileImages()` runs at build time (server-only). It reads `public/profile/`, filters for web-compatible extensions (`.jpg`, `.jpeg`, `.png`, `.webp`, `.avif`), sorts alphabetically, and returns paths like `/profile/IMG_5546.webp`.
-
 ## Carousel Component
 
 **File:** `src/components/sections/About.tsx`
@@ -60,13 +44,12 @@ Sharp's prebuilt `libvips` binary excludes the HEVC codec due to MPEG-LA patent 
 
 ## Key Files
 
-| File | Purpose |
-|------|---------|
-| `scripts/convert-images.mjs` | HEIC → WebP conversion script |
-| `src/lib/profile.ts` | Build-time image path reader |
+| File                                | Purpose                          |
+| ----------------------------------- | -------------------------------- |
+| `scripts/convert-images.mjs`        | HEIC → WebP conversion script    |
+| `src/lib/profile.ts`                | Build-time image path reader     |
 | `src/components/sections/About.tsx` | Carousel UI + auto-advance logic |
-| `src/app/page.tsx` | Passes `profileImages` prop to About |
-| `public/profile/` | Image source directory |
+| `public/profile/`                   | Image source directory           |
 
 ## Gitignore
 

@@ -5,7 +5,6 @@ export interface PersonalInfo {
   bio: string;
   email: string;
   location: string;
-  profileImage: string;
   resumeUrl: string;
   socials: SocialLink[];
 }
@@ -79,7 +78,6 @@ export interface NavItem {
   label: string;
   href: string;
 }
-
 
 export interface BlogPostFull extends BlogPostMeta {
   content: string;

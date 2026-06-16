@@ -14,27 +14,30 @@ export function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const pathname = usePathname();
   const isHome = pathname === "/";
-  const sectionIds = navItems.map((item) => item.href.replace("#", ""));
+
+  const sectionIds = navItems
+    .filter((item) => item.href.startsWith("#"))
+    .map((item) => item.href.replace("#", ""));
+
   const activeSection = useActiveSection(sectionIds);
 
   return (
-    <nav className="fixed top-4 left-1/2 -translate-x-1/2 z-50 w-[calc(100%-2rem)] max-w-[850px]">
+    <nav className="fixed top-4 left-1/2 -translate-x-1/2 z-50 w-[calc(100%-2rem)] max-w-212.5">
       <div className="rounded-2xl bg-zinc-900/90 backdrop-blur-xl border border-zinc-800 px-4 py-3 md:px-6">
         <div className="flex items-center justify-between">
-          <Link
-            href={isHome ? "#home" : "/"}
-            className="text-lg font-extrabold text-white"
-          >
+          <Link href="/" className="text-lg font-extrabold text-white">
             {personalInfo.name.split(" ")[1]}
             <span className="text-red-500">.</span>
           </Link>
 
-          {/* Desktop nav */}
+          {/* Desktop Nav */}
           <div className="hidden md:flex items-center gap-1">
             {navItems.map((item) => {
+              const itemId = item.href.replace("#", "");
               const isActive = isHome
-                ? activeSection === item.href.replace("#", "")
+                ? activeSection === itemId
                 : item.href === "#blog" && pathname.startsWith("/blog");
+
               return (
                 <Link
                   key={item.href}
@@ -71,7 +74,7 @@ export function Navbar() {
             </a>
           </div>
 
-          {/* Mobile toggle */}
+          {/* Mobile Toggle */}
           <button
             onClick={() => setIsOpen(!isOpen)}
             className="md:hidden text-zinc-400 hover:text-red-400 transition-colors"
@@ -82,7 +85,7 @@ export function Navbar() {
         </div>
       </div>
 
-      {/* Mobile full-screen overlay */}
+      {/* Mobile Overlay */}
       <AnimatePresence>
         {isOpen && (
           <motion.div
@@ -94,9 +97,11 @@ export function Navbar() {
           >
             <div className="flex flex-col gap-1">
               {navItems.map((item) => {
+                const itemId = item.href.replace("#", "");
                 const isActive = isHome
-                  ? activeSection === item.href.replace("#", "")
+                  ? activeSection === itemId
                   : item.href === "#blog" && pathname.startsWith("/blog");
+
                 return (
                   <Link
                     key={item.href}

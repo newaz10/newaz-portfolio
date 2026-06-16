@@ -3,12 +3,36 @@
 import { useEffect, useState } from "react";
 
 export function useActiveSection(sectionIds: string[]) {
-  const [activeSection, setActiveSection] = useState<string>("");
+  const [activeSection, setActiveSection] = useState<string>(
+    sectionIds[0] || "",
+  );
 
   useEffect(() => {
-    const observers: IntersectionObserver[] = [];
+    if (!sectionIds.length) return;
 
-    sectionIds.forEach((id) => {
+    let rafId: number;
+
+    const handleScroll = () => {
+      if (window.scrollY >= 150) {
+        rafId = requestAnimationFrame(handleScroll);
+        return;
+      }
+
+      setActiveSection((prev) => {
+        if (window.scrollY < 150 && prev !== sectionIds[0]) {
+          return sectionIds[0];
+        }
+        return prev;
+      });
+      rafId = requestAnimationFrame(handleScroll);
+    };
+
+    rafId = requestAnimationFrame(handleScroll);
+
+    const observers: IntersectionObserver[] = [];
+    const sectionsToObserve = sectionIds.slice(1);
+
+    sectionsToObserve.forEach((id) => {
       const element = document.getElementById(id);
       if (!element) return;
 
@@ -18,7 +42,10 @@ export function useActiveSection(sectionIds: string[]) {
             setActiveSection(id);
           }
         },
-        { rootMargin: "-50% 0px -50% 0px" }
+        {
+          rootMargin: "-50% 0px -50% 0px",
+          threshold: 0,
+        },
       );
 
       observer.observe(element);
@@ -26,6 +53,7 @@ export function useActiveSection(sectionIds: string[]) {
     });
 
     return () => {
+      cancelAnimationFrame(rafId);
       observers.forEach((observer) => observer.disconnect());
     };
   }, [sectionIds]);

@@ -80,16 +80,6 @@ export interface NavItem {
   href: string;
 }
 
-export interface BlogPostMeta {
-  slug: string;
-  title: string;
-  description: string;
-  date: string;
-  readTime: string;
-  tags: string[];
-  coverImage?: string;
-  published: boolean;
-}
 
 export interface BlogPostFull extends BlogPostMeta {
   content: string;

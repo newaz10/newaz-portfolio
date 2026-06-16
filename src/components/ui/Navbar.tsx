@@ -34,9 +34,7 @@ export function Navbar() {
           <div className="hidden md:flex items-center gap-1">
             {navItems.map((item) => {
               const itemId = item.href.replace("#", "");
-              const isActive = isHome
-                ? activeSection === itemId
-                : item.href === "#blog" && pathname.startsWith("/blog");
+              const isActive = isHome ? activeSection === itemId : false;
 
               return (
                 <Link

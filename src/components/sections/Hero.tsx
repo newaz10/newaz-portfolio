@@ -1,21 +1,12 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { ArrowDown, ArrowRight, Copy, Check } from "lucide-react";
-import { useState } from "react";
+import { ArrowDown, ArrowRight, FileText } from "lucide-react"; // Added FileText icon
 import { personalInfo } from "~/data/personal";
 import { fadeInUp, staggerContainer } from "~/lib/motion";
 import { GradientOrb } from "~/components/effects/GradientOrb";
 
 export function Hero() {
-  const [copied, setCopied] = useState(false);
-
-  const copyEmail = () => {
-    navigator.clipboard.writeText(personalInfo.email);
-    setCopied(true);
-    setTimeout(() => setCopied(false), 2000);
-  };
-
   return (
     <section
       id="hero"
@@ -34,10 +25,7 @@ export function Hero() {
         className="relative z-10 mx-auto max-w-4xl text-center"
       >
         {/* Intro label */}
-        <motion.p
-          variants={fadeInUp}
-          className="text-lg text-[#a1a1aa]"
-        >
+        <motion.p variants={fadeInUp} className="text-lg text-[#a1a1aa]">
           Hey, I&apos;m
         </motion.p>
 
@@ -90,17 +78,19 @@ export function Hero() {
             <ArrowRight size={16} />
           </a>
 
-          <button
-            onClick={copyEmail}
-            className="inline-flex items-center gap-2 text-[#a1a1aa] text-sm hover:text-[#fafafa] active:scale-95 active:text-[#fafafa] transition-colors cursor-pointer"
+          {/* Updated Resume Button */}
+          <a
+            href={personalInfo.resumeUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-2 px-6 py-3 rounded-xl text-sm font-medium 
+             bg-white/5 border border-white/10 text-zinc-200 
+             hover:bg-white/10 hover:text-white hover:border-white/20 
+             transition-all duration-300 backdrop-blur-md shadow-sm"
           >
-            {personalInfo.email}
-            {copied ? (
-              <Check size={14} className="text-red-400" />
-            ) : (
-              <Copy size={14} />
-            )}
-          </button>
+            <FileText size={16} className="opacity-70" />
+            View Resume
+          </a>
         </motion.div>
       </motion.div>
 

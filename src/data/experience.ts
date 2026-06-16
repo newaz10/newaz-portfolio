@@ -22,7 +22,7 @@ export const experience: Experience[] = [
     role: "Senior Frontend Developer",
     period: "Oct 2024 - Apr 2025",
     location: "Gurugram",
-    website: "http://quantxindia.com/",
+    website: "http://quantxbd.com/",
     highlights: [
       "Integrated TradingView Advanced Charting Library to provide interactive financial charts with technical indicators",
       "Developed and optimized a real-time trading platform using React, TypeScript, and WebSockets for high-frequency data updates",
@@ -59,6 +59,12 @@ export const experience: Experience[] = [
       "Used Redux Toolkit & RTK Query for efficient caching and state management",
       "Implemented WebRTC video calling, handling low-latency communication and network edge cases",
     ],
-    techUsed: ["React Native", "Redux Toolkit", "RTK Query", "WebRTC", "TypeScript"],
+    techUsed: [
+      "React Native",
+      "Redux Toolkit",
+      "RTK Query",
+      "WebRTC",
+      "TypeScript",
+    ],
   },
 ];

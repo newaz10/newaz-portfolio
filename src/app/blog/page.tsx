@@ -5,15 +5,15 @@ import { getAllPosts } from "~/lib/blog";
 import { BlogCard } from "~/components/ui/BlogCard";
 
 export const metadata: Metadata = {
-  title: "Blog | Abhay Rana",
+  title: "Blog | MH Newaz",
   description:
-    "Articles on React, TypeScript, web development, architecture, and modern frontend tooling by Abhay Rana.",
-  alternates: { canonical: "https://www.abhayrana.com/blog" },
+    "Articles on React, TypeScript, web development, architecture, and modern frontend tooling by MH Newaz.",
+  alternates: { canonical: "https://www.newaz.com/blog" },
   openGraph: {
-    title: "Blog | Abhay Rana",
+    title: "Blog | MH Newaz",
     description:
       "Articles on React, TypeScript, web development, architecture, and modern frontend tooling.",
-    url: "https://www.abhayrana.com/blog",
+    url: "https://www.newaz.com/blog",
     type: "website",
   },
 };
@@ -59,11 +59,7 @@ export default function BlogPage() {
         /* Full bento-grid for 4+ posts */
         <div className="bento-grid">
           {posts.map((post, index) => (
-            <BlogCard
-              key={post.slug}
-              post={post}
-              featured={index === 0}
-            />
+            <BlogCard key={post.slug} post={post} featured={index === 0} />
           ))}
         </div>
       )}

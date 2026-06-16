@@ -373,10 +373,10 @@ Here's the part where I ask you to run a command and star a repo.
 npx create-modern-react my-app
 ```
 
-If it saves you 47 minutes, [star it on GitHub](https://github.com/newaz10/newaz-portfolio). If something's broken, [open an issue](https://github.com/abhay-rana/create-modern-react/issues). If you want a feature, PRs are open.
+If it saves you 47 minutes, [star it on GitHub](https://github.com/newaz10/newaz-portfolio). If something's broken, [open an issue](https://github.com/newaz10/newaz-portfolio/issues). If you want a feature, PRs are open.
 
 I built this because I'm lazy in the way all good developers are lazy — I'd rather spend a week automating something than 47 minutes doing it by hand. Twice.
 
 ---
 
-_I'm [Abhay Rana](https://dev.to/abhay-rana) — I build tools so I can be lazier. Follow me for more React, TypeScript, and "I automated the boring part" content._
+_I'm [MH NEWAZ](https://github.com/newaz10/newaz-portfolio) — I build tools so I can be lazier. Follow me for more React, TypeScript, and "I automated the boring part" content._

@@ -4,7 +4,7 @@ import { About } from "~/components/sections/About";
 import { Projects } from "~/components/sections/Projects";
 import { TechStack } from "~/components/sections/TechStack";
 import { Experience } from "~/components/sections/Experience";
-import { Testimonials } from "~/components/sections/Testimonials";
+// import { Testimonials } from "~/components/sections/Testimonials";
 import { ResumeCTA } from "~/components/sections/ResumeCTA";
 import { Contact } from "~/components/sections/Contact";
 
@@ -17,7 +17,7 @@ export default function Home() {
       <Projects />
       <TechStack />
       <Experience />
-      <Testimonials />
+      {/* <Testimonials /> */}
       <ResumeCTA />
       <Contact />
     </>

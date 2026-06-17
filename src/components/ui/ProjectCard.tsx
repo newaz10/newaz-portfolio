@@ -8,6 +8,8 @@ import {
   ShieldCheck,
   Zap,
   Users,
+  MapPin,
+  CreditCard,
 } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
 import type { Project } from "~/types/data";
@@ -18,6 +20,8 @@ const highlightIcons: Record<string, LucideIcon> = {
   ShieldCheck,
   Zap,
   Users,
+  MapPin,
+  CreditCard,
 };
 
 interface ProjectCardProps {
@@ -26,7 +30,11 @@ interface ProjectCardProps {
   className?: string;
 }
 
-export function ProjectCard({ project, featured, className }: ProjectCardProps) {
+export function ProjectCard({
+  project,
+  featured,
+  className,
+}: ProjectCardProps) {
   const isDisabled = project.disabled;
 
   return (
@@ -37,7 +45,7 @@ export function ProjectCard({ project, featured, className }: ProjectCardProps) 
           ? "opacity-40 cursor-not-allowed"
           : "glass-hover hover:-translate-y-2 hover:shadow-[0_0_40px_rgba(239,68,68,0.15)]",
         featured && "md:col-span-2",
-        className
+        className,
       )}
     >
       <div className="mb-4">
@@ -47,7 +55,7 @@ export function ProjectCard({ project, featured, className }: ProjectCardProps) 
               "text-xl font-semibold transition-colors",
               isDisabled
                 ? "text-[#555]"
-                : "text-[#fafafa] group-hover:text-red-400"
+                : "text-[#fafafa] group-hover:text-red-400",
             )}
           >
             {project.title}
@@ -61,7 +69,7 @@ export function ProjectCard({ project, featured, className }: ProjectCardProps) 
         <p
           className={cn(
             "mt-2 text-sm leading-relaxed",
-            isDisabled ? "text-[#444]" : "text-[#a1a1aa]"
+            isDisabled ? "text-[#444]" : "text-[#a1a1aa]",
           )}
         >
           {project.description}
@@ -104,7 +112,7 @@ export function ProjectCard({ project, featured, className }: ProjectCardProps) 
               "rounded-full border px-3 py-1 text-xs font-mono",
               isDisabled
                 ? "border-white/5 bg-white/[0.02] text-[#444]"
-                : "border-white/10 bg-white/5 text-[#a1a1aa]"
+                : "border-white/10 bg-white/5 text-[#a1a1aa]",
             )}
           >
             {tech}

@@ -8,12 +8,6 @@ The About section displays profile photos in an auto-advancing carousel with man
 2. Run `npm run dev` or `npm run build` — HEIC files are auto-converted to `.webp`
 3. The carousel picks them up automatically (sorted alphabetically by filename)
 
-## HEIC Conversion Pipeline
-
-**Script:** `scripts/convert-images.mjs`
-
-Runs via npm `predev`/`prebuild` hooks before the Next.js dev server or build starts.
-
 ### Pipeline stages
 
 1. **Read** — scans `public/profile/` for `.heic`/`.heif` files
@@ -46,7 +40,6 @@ Sharp's prebuilt `libvips` binary excludes the HEVC codec due to MPEG-LA patent 
 
 | File                                | Purpose                          |
 | ----------------------------------- | -------------------------------- |
-| `scripts/convert-images.mjs`        | HEIC → WebP conversion script    |
 | `src/lib/profile.ts`                | Build-time image path reader     |
 | `src/components/sections/About.tsx` | Carousel UI + auto-advance logic |
 | `public/profile/`                   | Image source directory           |

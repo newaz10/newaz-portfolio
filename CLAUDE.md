@@ -15,4 +15,3 @@ Portfolio site built with **Next.js 16** (App Router), **React 19**, **Tailwind 
 - `src/lib/profile.ts` — Build-time reader for profile images in `public/profile/`
 - `src/lib/cn.ts` — `cn()` utility combining clsx + tailwind-merge
 - `src/lib/motion.ts` — Reusable Framer Motion variants (fadeInUp, fadeIn, scaleIn, slideInLeft/Right, staggerContainer, staggerItem)
-- `scripts/convert-images.mjs` — HEIC → WebP conversion script (runs via predev/prebuild hooks)

@@ -78,8 +78,3 @@ export interface NavItem {
   label: string;
   href: string;
 }
-
-export interface BlogPostFull extends BlogPostMeta {
-  content: string;
-  wordCount: number;
-}

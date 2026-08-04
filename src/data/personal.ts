@@ -9,7 +9,7 @@ export const personalInfo: PersonalInfo = {
   email: "mh.newaz001@gmail.com",
   location: "Dhaka, Bangladesh",
   // resumeUrl: "/resume.pdf",
-  resumeUrl: "/MH_Newaz_MERN_Engineer_Resume.pdf",
+  resumeUrl: "/MH_Newaz_Resume.pdf",
   socials: [
     {
       platform: "GitHub",

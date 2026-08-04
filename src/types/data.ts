@@ -33,6 +33,8 @@ export interface Project {
   featured: boolean;
   disabled?: boolean;
   highlights?: ProjectHighlight[];
+  company?: string;
+  isProfessional?: boolean;
 }
 
 export interface Experience {

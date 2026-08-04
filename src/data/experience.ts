@@ -4,7 +4,7 @@ export const experience: Experience[] = [
   {
     id: "exp-1",
     company: "Quad Theory Ltd",
-    role: "Software Engineer",
+    role: "Junior Software Engineer",
     period: "Oct 2025 - Present",
     location: "Remote",
     website: "https://www.linkedin.com/company/quad-theory-ltd/",
@@ -22,6 +22,28 @@ export const experience: Experience[] = [
       "Google Maps API",
       "RESTful APIs",
       "JWT",
+    ],
+  },
+  {
+    id: "exp-2",
+    company: "ZeroByte",
+    role: "Frontend Developer",
+    period: "Apr 2025 - Sep 2025",
+    location: "On-site",
+    website: undefined,
+    highlights: [
+      "Developed responsive user interfaces using React.js and Tailwind CSS, ensuring cross-browser compatibility and mobile-first design.",
+      "Collaborated with backend teams to integrate RESTful APIs, optimizing data fetching and state management for improved performance.",
+      "Implemented reusable UI components and maintained code quality through Git version control and peer code reviews.",
+      "Participated in agile sprints, translating Figma designs into pixel-perfect, interactive web experiences.",
+    ],
+    techUsed: [
+      "React.js",
+      "TypeScript",
+      "Tailwind CSS",
+      "Redux Toolkit",
+      "Git",
+      "REST APIs",
     ],
   },
 ];

@@ -9,7 +9,6 @@ export const projects: Project[] = [
     techStack: [
       "Next.js",
       "TypeScript",
-      "Node.js",
       "MongoDB",
       "Google Maps API",
       "Tailwind CSS",
@@ -17,6 +16,8 @@ export const projects: Project[] = [
     liveUrl: "https://gotaste.uk",
     image: "/projects/gotaste.png",
     featured: true,
+    company: "Quad Theory Ltd",
+    isProfessional: true,
     highlights: [
       {
         icon: "Zap",
@@ -37,6 +38,38 @@ export const projects: Project[] = [
         icon: "CreditCard",
         label: "Automated Refunds",
         detail: "Streamlined order-handling framework boosting speed by 20%",
+      },
+    ],
+  },
+  {
+    id: "sundarban-cargo",
+    title: "Sundarban Cargo Service",
+    description:
+      "A corporate logistics platform built at Quad Theory Ltd. Features a real-time shipping price calculator, service booking system, and inquiry management. Focused on lead generation and mobile responsiveness for a UK-Bangladesh cargo business.",
+    techStack: ["React.js", "Tailwind CSS", "TypeScript", "React Hook Form"],
+    liveUrl: "https://sundarbancargo.com",
+    image: "/projects/sundarban.png",
+    featured: true,
+    company: "Quad Theory Ltd",
+    isProfessional: true,
+    highlights: [
+      {
+        icon: "Zap",
+        label: "Dynamic Rate Calculator",
+        detail:
+          "Interactive forms calculating shipping prices based on weight, dimensions, and destinations",
+      },
+      {
+        icon: "Users",
+        label: "Shipment Inquiry & Lead Flow",
+        detail:
+          "Engineered forms and backend endpoints for customer inquiries and lead generation",
+      },
+      {
+        icon: "MapPin",
+        label: "Responsive UI & Branding",
+        detail:
+          "Accessible layouts handling corporate partner logos, testimonials, and interactive contact maps",
       },
     ],
   },
@@ -130,12 +163,12 @@ export const projects: Project[] = [
     featured: true,
     highlights: [
       {
-        icon: "TrendingUp", // Ensure you import TrendingUp from lucide-react
+        icon: "TrendingUp",
         label: "Live Market Data",
         detail: "Real-time metrics and coin details via CoinGecko REST API",
       },
       {
-        icon: "PieChart", // Ensure you import PieChart from lucide-react
+        icon: "PieChart",
         label: "Data Visualization",
         detail:
           "Multi-timeline historical trend tracking with react-google-charts",
@@ -146,22 +179,5 @@ export const projects: Project[] = [
         detail: "Efficient global state handling using React Context API",
       },
     ],
-  },
-  {
-    id: "healthmug",
-    title: "HealthMug",
-    description:
-      "India's leading online healthcare platform with 100K+ products across Ayurveda, Homeopathy, and wellness categories. Features real-time inventory",
-    techStack: [
-      "React",
-      "Node.js",
-      "MongoDB",
-      "Express",
-      "Redux Toolkit",
-      "Tailwind CSS",
-    ],
-    liveUrl: "https://www.healthmug.com",
-    image: "/projects/healthmug.jpg",
-    featured: true,
   },
 ];

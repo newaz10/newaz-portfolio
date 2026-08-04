@@ -10,6 +10,7 @@ import {
   Users,
   MapPin,
   CreditCard,
+  Briefcase,
 } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
 import type { Project } from "~/types/data";
@@ -49,6 +50,30 @@ export function ProjectCard({
       )}
     >
       <div className="mb-4">
+        {project.isProfessional && (
+          <div className="group/badge relative mb-4 inline-flex overflow-hidden rounded-full border border-red-500/20 bg-gradient-to-r from-red-500/10 via-red-500/5 to-transparent p-[1px] shadow-[0_0_15px_-5px_rgba(239,68,68,0.3)] transition-all duration-300 hover:border-red-500/40 hover:shadow-[0_0_20px_-5px_rgba(239,68,68,0.5)]">
+            {/* Inner content wrapper */}
+            <div className="relative flex items-center gap-2 rounded-full bg-[#0a0a0a]/80 px-3 py-1 backdrop-blur-md">
+              {/* Animated Pulse Dot */}
+              <span className="relative flex h-2 w-2">
+                <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-red-400 opacity-75"></span>
+                <span className="relative inline-flex h-2 w-2 rounded-full bg-red-500"></span>
+              </span>
+
+              {/* Text Content */}
+              <div className="flex items-center gap-1.5 text-xs font-medium tracking-wide">
+                <span className="text-red-400">Professional Work</span>
+                <span className="text-white/20">•</span>
+                <span className="bg-gradient-to-r from-red-200 to-red-400 bg-clip-text text-transparent">
+                  {project.company}
+                </span>
+              </div>
+
+              {/* Hover Shimmer Effect */}
+              <div className="absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/10 to-transparent transition-transform duration-700 group-hover/badge:translate-x-full" />
+            </div>
+          </div>
+        )}
         <div className="flex items-center gap-3">
           <h3
             className={cn(

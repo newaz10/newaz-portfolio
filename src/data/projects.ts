@@ -17,6 +17,8 @@ export const projects: Project[] = [
     liveUrl: "https://gotaste.uk",
     image: "/projects/gotaste.png",
     featured: true,
+    company: "Quad Theory Ltd",
+    isProfessional: true,
     highlights: [
       {
         icon: "Zap",
@@ -147,21 +149,21 @@ export const projects: Project[] = [
       },
     ],
   },
-  {
-    id: "healthmug",
-    title: "HealthMug",
-    description:
-      "India's leading online healthcare platform with 100K+ products across Ayurveda, Homeopathy, and wellness categories. Features real-time inventory",
-    techStack: [
-      "React",
-      "Node.js",
-      "MongoDB",
-      "Express",
-      "Redux Toolkit",
-      "Tailwind CSS",
-    ],
-    liveUrl: "https://www.healthmug.com",
-    image: "/projects/healthmug.jpg",
-    featured: true,
-  },
+  // {
+  //   id: "healthmug",
+  //   title: "HealthMug",
+  //   description:
+  //     "India's leading online healthcare platform with 100K+ products across Ayurveda, Homeopathy, and wellness categories. Features real-time inventory",
+  //   techStack: [
+  //     "React",
+  //     "Node.js",
+  //     "MongoDB",
+  //     "Express",
+  //     "Redux Toolkit",
+  //     "Tailwind CSS",
+  //   ],
+  //   liveUrl: "https://www.healthmug.com",
+  //   image: "/projects/healthmug.jpg",
+  //   featured: true,
+  // },
 ];
